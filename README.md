@@ -43,20 +43,21 @@ The following methods are provided:
 
 ## Examples
 
-Assume the following configuration files.  
-global.yaml:
+Assume the following configuration files: 
 
-```yaml
-log:
-  level: debug
-```
+* global.yaml:
 
-my-app.yaml:
+  ```yaml
+  log:
+    level: debug
+  ```
 
-```yaml
-database:
-  host: 192.168.10.3
-```
+* my-app.yaml:
+
+  ```yaml
+  database:
+    host: 192.168.10.3
+  ```
 
 The configuration files can be loaded and converted to a JSON configuration object by the following code:
 
@@ -77,7 +78,7 @@ config.load()
 })
 ```
 
-The returned configuration object will looks as follows:
+The returned configuration object will look as follows:
 
 ```javascript
 {

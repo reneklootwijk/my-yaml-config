@@ -1,7 +1,7 @@
 {
   "name": "my-yaml-config",
   "preferGlobal": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Rene Klootwijk <rene@klootwijk.org>",
   "description": "Module to configure applications using yaml",
   "main": "./lib/index.js",

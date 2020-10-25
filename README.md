@@ -1,4 +1,4 @@
-# Managing configuration using yaml
+# Managing application configuration using yaml
 
 [![Build](https://github.com/reneklootwijk/my-yaml-config/workflows/build/badge.svg)](https://github.com/reneklootwijk/my-yaml-config/actions)
 [![Coverage Status](https://coveralls.io/repos/github/reneklootwijk/my-yaml-config/badge.svg?branch=master)](https://coveralls.io/github/reneklootwijk/my-yaml-config?branch=master)

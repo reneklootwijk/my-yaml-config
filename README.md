@@ -31,7 +31,7 @@ When multiple configuration files are specified they are merged into one configu
 
 The following methods are provided:
 
-* `load()`, this method loads the specified configuration file(s), merges the configuration files in case multiple files are specified and returns a promise. When the promise resolves it returns the resulting configuration as a JSON object. When oen of the specified files does not exist or contains an error, the promise will be be rejected.
+* `load(options)`, this method loads the specified configuration file(s), merges the configuration files in case multiple files are specified and returns a promise. When the promise resolves it returns the resulting configuration as a JSON object. When the *ignoreNonExisting* option is set to true, any non-existing files will be ignored, by default the option is set to false. When the *ignoreNonExisting* option is not set or set to false the promise will be rejected when one of the specified files does not exist.
 
 * `get(path, [separator=])`, this method returns the value of a specific property that must be specified as a JSON path string. By default a dot is used as separator. A different separator can be used by specifying it via the separator attribute. If no path is specified, the whole configuration will be returned as JSON object.
 

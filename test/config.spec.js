@@ -1,6 +1,6 @@
 /* eslint-disable mocha/no-hooks-for-single-case */
 
-const assert = require('chai').assert
+const { assert, expect } = require('chai')
 const rewireMock = require('rewiremock/node')
 
 rewireMock.enable()
@@ -8,6 +8,14 @@ rewireMock.enable()
 rewireMock('fs').by('./mocks/fs')
 
 const Config = require('../lib')
+
+describe('Instantiating configuration object', function () {
+  it('Instantiate configuration object without specifying configuration files', function () {
+    assert.throws(() => {
+      let config = new Config()
+    }, 'No configuration file(s) specified', 'no or non-expected error has been thrown')
+  })
+})
 
 describe('Configuration file tests', function () {
   var config
@@ -17,14 +25,45 @@ describe('Configuration file tests', function () {
     config = new Config([
       'file1',
       'file2',
+      'filea',
       'file3'
     ])
   })
 
-  it('load configuration files', async function () {
-    data = await config.load()
+  it('load configuration files without setting the ignoreNonExisting option', async function () {
+    let errorName
 
-    assert.isObject(data, 'data is no object')
+    try {
+      await config.load()
+    } catch (error) {
+      errorName = error.name
+    }
+
+    assert.strictEqual(errorName, 'NonExistentError', 'no or wrong error thrown')    
+  })
+
+  it('load configuration files with the ignoreNonExisting option set to false', async function () {
+    let errorName
+
+    try {
+      await config.load({ ignoreNonExisting: false })
+    } catch (error) {
+      errorName = error.name
+    }
+
+    assert.strictEqual(errorName, 'NonExistentError', 'no or wrong error thrown')    
+  })
+
+  it('load configuration files with the ignoreNonExisting option set to true', async function () {
+    let errorName
+
+    try {
+      data = await config.load({ ignoreNonExisting: true })
+    } catch (error) {
+      errorName = error.name
+    }
+
+    assert.strictEqual(errorName, undefined, 'an error was thrown')    
   })
 
   it('check resulting config', function () {

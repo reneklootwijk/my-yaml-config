@@ -23,6 +23,14 @@ const files = {
       `
 }
 
+exports.existsSync = (file) => {
+  if (!files[file]) {
+    return false
+  }
+
+  return true
+}
+
 exports.readFileSync = (file) => {
   if (!files[file]) {
     return

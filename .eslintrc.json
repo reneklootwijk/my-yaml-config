@@ -6,7 +6,6 @@
         "node": true
     },
     "extends": [
-        "plugin:vue/essential",
         "standard",
         "plugin:mocha/recommended"
     ],
@@ -18,7 +17,6 @@
         "ecmaVersion": 2018
     },
     "plugins": [
-        "vue",
         "mocha"
     ],
     "rules": {

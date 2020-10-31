@@ -73,9 +73,21 @@ describe('Configuration file tests', function () {
     assert.strictEqual(data.param.value, 5, 'parameter param.value is not correct')
     assert.strictEqual(data.param.file1Param, 1, 'parameter param.file1Param is not correct')
     assert.strictEqual(data.param.file2Param, 2, 'parameter param.file2Param is not correct')
-    assert.strictEqual(data.param.file3Param, 3, 'parameter param.file2Param is not correct')
+    assert.strictEqual(data.param.file3Param, 3, 'parameter param.file3Param is not correct')
     assert.strictEqual(data.nested.level1, 1, 'parameter nested.level1 is not correct')
     assert.strictEqual(data.nested.level.level2, 2, 'parameter nested.level.level2 is not correct')
+  })
+
+  it('check the config to be persisted', function () {
+    assert.strictEqual(config._toBePersisted.file1Param, undefined, 'parameter file1Param is not correct')
+    assert.strictEqual(config._toBePersisted.file2Param, undefined, 'parameter file2Param is not correct')
+    assert.strictEqual(config._toBePersisted.file3Param, 'success', 'parameter file3Param is not correct')
+    assert.strictEqual(config._toBePersisted.param.value, 5, 'parameter param.value is not correct')
+    assert.strictEqual(config._toBePersisted.param.file1Param, undefined, 'parameter param.file1Param is not correct')
+    assert.strictEqual(config._toBePersisted.param.file2Param, undefined, 'parameter param.file2Param is not correct')
+    assert.strictEqual(config._toBePersisted.param.file3Param, 3, 'parameter param.file3Param is not correct')
+    assert.strictEqual(config._toBePersisted.nested.level1, 1, 'parameter nested.level1 is not correct')
+    assert.strictEqual(config._toBePersisted.nested.level.level2, 2, 'parameter nested.level.level2 is not correct')
   })
 
   it('get specific parameters', function () {
